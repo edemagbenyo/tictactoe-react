@@ -60,7 +60,6 @@ export default function App() {
   // const status = `Next player ${xIsNext?'X':'O'}`;
   const history = state.history;
   const current = history[state.stepNumber];
-  console.log(current, state.stepNumber);
   const winner = calculateWinner(current.square);
   const moves = history.map((step, move) => {
     const desc = move ? `Go to move #${move}` : "Go to game start";
