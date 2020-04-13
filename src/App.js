@@ -46,17 +46,21 @@ export default function App() {
     return null;
   }
   const jumpTo = function(step) {
-    setState({
-      history:[...history],
-      stepNumber: history.length,
-      xIsNext: step % 2 === 0
+    setState(prevState => {
+      return {
+        ...prevState,
+        ...{
+          stepNumber: step,
+          xIsNext: step % 2 === 0
+        }
+      };
     });
   };
 
   // const status = `Next player ${xIsNext?'X':'O'}`;
   const history = state.history;
-  console.log(state, state.stepNumber);
   const current = history[state.stepNumber];
+  console.log(current, state.stepNumber);
   const winner = calculateWinner(current.square);
   const moves = history.map((step, move) => {
     const desc = move ? `Go to move #${move}` : "Go to game start";
